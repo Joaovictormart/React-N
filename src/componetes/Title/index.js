@@ -1,17 +1,23 @@
 import React from "react"
 
-import {View, Text} from "react-native"
+import {    Text, View } from 'react-native';
 
+import style from "./style";
 
 export default function Title () {
 
     return(
-        <View>
+        <View style={style.praCima}>
 
-        <Text>
+        <Text  style={style.nU} >
             MM RELOGIOS
         </Text>
 
         </View>
     )
 }
+
+
+
+
+ 

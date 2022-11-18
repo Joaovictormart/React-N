@@ -5,36 +5,26 @@ import { View, TextInput,
 
 import styles from "./style"
 
-import {NavigationContainer} from '@react-navigation/native'
-
-import { createStackNavigator } from "@react-navigation/stack"
-
-import Register from "../../../pages/Register"
 
 
 
 export default function Form (navigation) {
 
 
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const [email, setEmail] = useState(null);
 
     const[senha, setSenha] = useState(null);
 
-    // const Stack = createStackNavigator.Navigation();
+    function verifica() {
 
-    // <NavigationContainer>
+        if(email === null  && senha === null) {
+            setErrorMessage ("campo obrigatorio")
+        }
 
-    //     <Stack.Navigation>
 
-    //         <Stack.Screen
-           
-    //        name="Register"
-    //        component= {Register}
-    //         />
-    //     </Stack.Navigation>
-    // </NavigationContainer>
-  
+    }
 
     return( 
         
@@ -46,18 +36,18 @@ export default function Form (navigation) {
     <TextInput placeholder="Seu sobrenome .." style={styles.textInput} /> */}
 
     <Text   style={styles.formLabel}>E-mail</Text>
-    <Text style={styles.errorMessage}>   </Text>
+    <Text style={styles.errorMessage}> {setErrorMessage}  </Text>
 
     <TextInput placeholder="Seu email .." style={styles.textInput}  />
 
     <Text  style={styles.formLabel} >Senha</Text>
 
-    <Text style={styles.errorMessage}>   </Text>
+    <Text style={styles.errorMessage}> {setErrorMessage}  </Text>
 
     <TextInput secureTextEntry={true} placeholder="Sua senha .." style={styles.textInput}  />
 
    <TouchableOpacity
-   onPress={()=> navigation.navigate('Register')}
+   onPress={verifica()}
    style={styles.btn}
    >
    
@@ -66,6 +56,11 @@ export default function Form (navigation) {
    </TouchableOpacity>
 
 
+<Text
+
+onPress={()=> navigation.navigate('Register')}
+
+>Cadastre-se</Text>
    
         </View>
         </View>
